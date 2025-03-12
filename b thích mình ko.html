@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaración</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+        }
+
+        .contenedor {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #ff6b6b;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.3s;
+        }
+
+        #YES {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #YES:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+
+        #No {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+
+        #No:hover {
+            background-color: #e53935;
+        }
+
+        #response {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #4CAF50;
+            font-weight: bold;
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <p>Bạn có thích mình không?</p>
+        <button id="YES">YES</button>
+        <button id="No">No</button>
+        <p id="response">Tôi cũng thế!!</p>
+    </div>
+    <script>
+        const yesBtn = document.querySelector('#YES');
+        const responseText = document.querySelector('#response');
+
+        yesBtn.addEventListener('click', function () {
+            responseText.style.display = 'block'; // Hiển thị chữ "Tôi cũng thế!!"
+        });
+
+        const noBtn = document.querySelector('#No');
+
+        noBtn.addEventListener('mouseover', function () {
+            const randomX = Math.random() * 90; // Giới hạn từ 0 đến 90% để không vượt quá màn hình
+            const randomY = Math.random() * 90;
+            noBtn.style.setProperty('top', randomY + '%');
+            noBtn.style.setProperty('left', randomX + '%');
+            noBtn.style.setProperty('transform', `translate(-${randomX}%, -${randomY}%)`);
+        });
+    </script>
+</body>
+</html>
